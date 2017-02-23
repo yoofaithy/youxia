@@ -1,6 +1,11 @@
 package com.ibm.ff.dbfactory;
 
+import java.lang.reflect.Field;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -9,6 +14,7 @@ import com.cloudant.client.api.*;
 import com.cloudant.client.api.model.Response;
 import com.cloudant.http.interceptors.BasicAuthInterceptor;
 import com.cloudant.http.interceptors.CookieInterceptor;
+import com.ibm.ff.rest.entity.mapping.JobRoleMapping;
 
 public class cloudant {
 	private String cloudantUsername;
@@ -166,6 +172,70 @@ public class cloudant {
 			return resp;
 		} catch (Exception e){
 
+			System.out.println(e.getStackTrace() ); 	
+			System.out.println(e.getMessage() ); 
+			return null;
+		}
+	}
+	public List<?> findByFieldName(String DBName, String findByName, String find, String returnObjectType){
+		try{
+			Class<?> returnClass=Class.forName("com.ibm.ff.rest.entity.cloudant." + returnObjectType);
+			
+			if (getCloudantDBName() != DBName)
+				connectDB(DBName);
+			String selectorJson="\"selector\":{\""+ findByName +"\":\""+find+"\"}";
+			return db.findByIndex(selectorJson, returnClass);
+		} catch (Exception e){
+			System.out.println(e.getStackTrace() ); 	
+			System.out.println(e.getMessage() ); 
+			return null;
+		}
+	}
+	
+	public List<Object> regexFindByFieldName(String DBName, String findByName, String regex, String returnObjectType){
+		try{
+			List<?> cloudantReturn;
+			List<Object> responselist = new ArrayList<Object>();
+			Object response;
+			Class<?> cloudantClass=Class.forName("com.ibm.ff.rest.entity.cloudant." + returnObjectType);
+			Class<?> returnClass=Class.forName("com.ibm.ff.rest.entity.response." + returnObjectType);
+
+	    	HashMap<String, String> jobrolemap = new JobRoleMapping().getJobRoleMap();	
+	    	
+			if (getCloudantDBName() != DBName)
+				connectDB(DBName);
+			String selectorJson="\"selector\":{\""+ findByName +"\":{\"$regex\":\""+regex+"\"}}";
+			cloudantReturn = db.findByIndex(selectorJson, cloudantClass);
+			for (Object object: cloudantReturn)
+			{
+				response = returnClass.newInstance();
+				for (Field field: response.getClass().getDeclaredFields())
+				{
+					try {
+						String cloudantfieldname = jobrolemap.get(field.getName());
+						String[] cloudantfields = cloudantfieldname.split(".");
+						if (cloudantfields.length>0)
+						{
+							Class<?> cloudantSubClass=Class.forName("com.ibm.ff.rest.entity.cloudant." + cloudantfields[0]);
+							field.set(response, cloudantSubClass.getDeclaredField(cloudantfields[1]).get(cloudantSubClass));
+						}
+						else
+							field.set(response, object.getClass().getDeclaredField(cloudantfieldname).get(object));
+					} catch (Exception e) {
+						continue;
+					}
+				}
+
+				responselist.add(response);
+/*				for (Map.Entry<String, String> entry : jobrolemap.entrySet())
+				{					
+					response = returnClass.newInstance();
+					response.getClass().getDeclaredField(entry.getKey()).set(cloudantReturn, object.getClass().getDeclaredField(entry.getValue()));
+					responselist.add(response);
+				}*/
+			}
+			return responselist;
+		} catch (Exception e){
 			System.out.println(e.getStackTrace() ); 	
 			System.out.println(e.getMessage() ); 
 			return null;

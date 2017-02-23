@@ -8,6 +8,8 @@ import javax.ws.rs.core.*;
 
 import com.cloudant.http.interceptors.BasicAuthInterceptor;
 import com.ibm.ff.dbfactory.*;
+import com.ibm.ff.rest.entity.*;
+import com.ibm.ff.rest.entity.response.Jobrole;
 
 @ApplicationPath("/")
 @Path("admin")
@@ -48,5 +50,31 @@ public class AdminServices extends Application {
     	cloudant c = new cloudant();
     	return c.askForToken();    	
 	}*/
+
+    @GET
+    @Path("{DBName}/findjobrole/{JobRoleName}")
+	@Produces("application/json")
+    public Object findjobrole(@PathParam("DBName") String DBName,@PathParam("JobRoleName") String JobRoleName){
+    	cloudant c = new cloudant();
+    	c.login();
+    	
+    	List<com.ibm.ff.rest.entity.cloudant.Jobrole> jobroleList = (List<com.ibm.ff.rest.entity.cloudant.Jobrole>) c.findByFieldName(DBName, "jobRoleName", JobRoleName, "Jobrole");
+    	
+    	
+    	return jobroleList;
+    }
+    
+    @GET
+    @Path("{DBName}/regexfindjobrole/{JobRoleName}")
+	@Produces("application/json")
+    public List<Object> regexfindjobrole(@PathParam("DBName") String DBName,@PathParam("JobRoleName") String JobRoleName){
+    	cloudant c = new cloudant();
+    	c.login();
+    	
+    	List<Object> jobroleList = (List<Object>) c.regexFindByFieldName(DBName, "jobRoleName", JobRoleName, "Jobrole");
+    	
+		
+    	return jobroleList;
+    }
     
 }
