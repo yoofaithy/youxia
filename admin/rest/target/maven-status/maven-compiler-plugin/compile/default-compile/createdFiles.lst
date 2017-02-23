@@ -1,0 +1,3 @@
+com\ibm\ff\dbfactory\nosqlfactory.class
+com\ibm\ff\rest\services\AdminServices.class
+com\ibm\ff\dbfactory\cloudant.class

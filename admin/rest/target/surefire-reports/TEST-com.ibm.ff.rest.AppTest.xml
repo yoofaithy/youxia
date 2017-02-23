@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="0.002" errors="0" skipped="0" tests="1" name="com.ibm.ff.rest.AppTest">
+  <properties>
+    <property name="java.vendor" value="IBM Corporation"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="os.name" value="Windows 7"/>
+    <property name="sun.boot.class.path" value="C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\bin\compressedrefs\jclSC170\vm.jar;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\se-service.jar;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\math.jar;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\jlm.jar;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\ibmorb.jar;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\ibmorbapi.jar;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\ibmcfw.jar;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\ibmpkcs.jar;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\ibmcertpathfw.jar;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\ibmjgssfw.jar;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\ibmjssefw.jar;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\ibmsaslfw.jar;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\ibmjcefw.jar;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\ibmjgssprovider.jar;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\ibmjsseprovider2.jar;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\ibmcertpathprovider.jar;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\xmldsigfw.jar;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\xml.jar;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\charsets.jar;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\resources.jar;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\rt.jar;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\dataaccess.jar;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\ibmgpu.jar"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="java.runtime.version" value="pwa6470_27sr2fp10ifx-20150313_01 (SR2 FP10+IV70681)"/>
+    <property name="user.name" value="FaithFan"/>
+    <property name="java.compiler" value="j9jit27"/>
+    <property name="os.encoding" value="UTF8"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="com.ibm.util.extralibs.properties" value=""/>
+    <property name="com.ibm.jcl.checkClassPath" value=""/>
+    <property name="user.language" value="en"/>
+    <property name="com.ibm.oti.vm.bootstrap.library.path" value="C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\bin\compressedrefs;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\bin"/>
+    <property name="sun.boot.library.path" value="C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\bin\compressedrefs;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\bin"/>
+    <property name="classworlds.conf" value="C:\work\project\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf8226017410734295026.tmp"/>
+    <property name="java.version" value="1.7.0"/>
+    <property name="user.timezone" value="Asia/Shanghai"/>
+    <property name="com.ibm.system.agent.path" value="C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\bin"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="com.ibm.zero.version" value="2"/>
+    <property name="java.endorsed.dirs" value="C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\endorsed"/>
+    <property name="com.ibm.oti.vm.library.version" value="27"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="com.ibm.packed.version" value="2"/>
+    <property name="java.class.version" value="51.0"/>
+    <property name="user.country" value="US"/>
+    <property name="java.home" value="C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre"/>
+    <property name="java.vm.info" value="JRE 1.7.0 Windows 7 amd64-64 Compressed References 20141215_227395 (JIT enabled, AOT enabled)
+J9VM - R27_Java727_SR2_20141215_1631_B227395
+JIT  - tr.r13.java_20141003_74587.07
+GC   - R27_Java727_SR2_20141215_1631_B227395_CMPRSS
+J9CL - 20141215_227395"/>
+    <property name="os.version" value="6.1"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.version" value="2.7"/>
+    <property name="user.variant" value=""/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="ibm.signalhandling.sigint" value="true"/>
+    <property name="user.home" value="C:\Users\IBM_ADMIN"/>
+    <property name="com.ibm.cpu.endian" value="little"/>
+    <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="ibm.signalhandling.sigchain" value="true"/>
+    <property name="java.library.path" value="C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\bin\compressedrefs;C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\bin;C:\windows\system32;C:\windows;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\IBM\Infoprint Select;c:\notes;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files (x86)\Windows Kits\8.0\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\PrivateAssemblies\;C:\Program Files (x86)\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files\Microsoft\Web Platform Installer\;C:\work\Tools\NodeJS;C:\Users\IBM_ADMIN\Downloads\JAVA\ibm-java-jre-80-win-x86_64\jre\bin;C:\Program Files\Git\cmd;C:\Program Files\Cloud Foundry;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Java\jdk1.7.0_17\bin;C:\Program Files\Java\jdk1.7.0_17\jre\bin;C:\Faith\study\spark-2.1.0-bin-hadoop2.7\bin;C:\faith\study\Vagrant\bin;C:\IBM\wp_profile\bin;C:\work\Environment\apache-maven-3.3.9\bin;C:\Program Files\IBM\node"/>
+    <property name="java.vendor.url" value="http://www.ibm.com/"/>
+    <property name="java.vm.vendor" value="IBM Corporation"/>
+    <property name="java.fullversion" value="JRE 1.7.0 IBM J9 2.7 Windows 7 amd64-64 Compressed References 20141215_227395 (JIT enabled, AOT enabled)
+J9VM - R27_Java727_SR2_20141215_1631_B227395
+JIT  - tr.r13.java_20141003_74587.07
+GC   - R27_Java727_SR2_20141215_1631_B227395_CMPRSS
+J9CL - 20141215_227395"/>
+    <property name="maven.home" value="C:\work\Environment\apache-maven-3.3.9"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B -s C:\work\Environment\maven-settings.xml clean package"/>
+    <property name="java.class.path" value="C:\work\Environment\apache-maven-3.3.9\boot\plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.vm.specification.version" value="1.0"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="java.io.tmpdir" value="C:\Users\IBM_AD~1\AppData\Local\Temp\"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\work\project\rest"/>
+    <property name="ibm.system.encoding" value="Cp1252"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="ibm.signalhandling.rs" value="false"/>
+    <property name="java.ext.dirs" value="C:\work\Environment\Eclipse-luna-Rtc-Liberty-SDK7\Eclipse-luna-Rtc-Liberty-SDK7\eclipse\Java\Java71\jre\lib\ext"/>
+    <property name="user.dir" value="C:\work\project\rest"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.name" value="IBM J9 VM"/>
+    <property name="com.ibm.oti.shared.enabled" value="false"/>
+    <property name="com.ibm.vm.bitmode" value="64"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="com.ibm.oti.configuration" value="scar"/>
+    <property name="com.ibm.oti.jcl.build" value="20141215_227395"/>
+    <property name="java.specification.version" value="1.7"/>
+  </properties>
+  <testcase time="0.002" classname="com.ibm.ff.rest.AppTest" name="testApp"/>
+</testsuite>

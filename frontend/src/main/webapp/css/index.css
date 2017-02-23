@@ -1,0 +1,35 @@
+.container{
+	width:100%;
+	height:800px;
+	margin-top:20px;
+}
+.nav{
+	width: 20%;
+	height:100%;
+	background-color:silver;
+	float:left;
+	padding-left:20px;
+	margin-right: 20px;
+}
+.nav_item{
+	height:10px;
+	color:blue;
+	cursor: pointer;	
+	margin-top: 20px;
+}
+.body{
+	width: 70%;
+	height:100%;
+	color:brown;
+	float:left;
+}
+.bodyup{
+	height:30%;	
+	background-color:#bbbbdd;
+	margin-bottom: 2%;
+}
+.bodydown{
+	height:68%;	
+	background-color:#ffc2a6;
+	margin-bottom: 10px;
+}

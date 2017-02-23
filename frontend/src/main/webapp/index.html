@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+</head>
+<body class="container">
+	<script src="js/lib/angular.min.js"></script>
+	<script src="js/lib/angular-ui-router.js"></script>
+	<script src="js/modules/config.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<div class="nav">
+		<div class="nav_item">
+			<a ui-sref="admin"> home page </a>
+		</div>
+		<div class="nav_item">
+			<a ui-sref="pageA"> page A </a>
+		</div>
+		<div class="nav_item">
+			<a ui-sref="pageB"> page B </a>
+		</div>
+		<div class="nav_item">
+			<a ui-sref="pageC"> page C </a>
+		</div>
+	</div>
+	<div class="body">
+		<div class="bodyup" ui-view="viewA"></div>
+		<div class="bodydown" ui-view="viewB"></div>
+	</div>
+</body>
+</html>
