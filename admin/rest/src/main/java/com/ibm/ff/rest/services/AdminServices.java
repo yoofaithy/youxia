@@ -1,15 +1,23 @@
 package com.ibm.ff.rest.services;
 
 
+import java.io.IOException;
+import java.security.NoSuchProviderException;
 import java.util.List;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
+import org.bouncycastle.openpgp.PGPException;
+
+import com.ibm.ff.pgp.*;
+import com.ibm.ff.pgp.PGPRealization.keyalgorithms;
 import com.cloudant.http.interceptors.BasicAuthInterceptor;
 import com.ibm.ff.dbfactory.*;
 import com.ibm.ff.rest.entity.*;
 import com.ibm.ff.rest.entity.response.Jobrole;
+
+
 
 @ApplicationPath("/")
 @Path("admin")
@@ -19,6 +27,36 @@ public class AdminServices extends Application {
 	@Produces("application/json")
 	public String getString() {
     	return "Test";
+	}
+    
+    @GET
+    @Path("genCer/{KeyStoreFileFullName}/{KeyStorePassword}/{CerFileFullName}/{KeyPassword}")
+	@Produces("application/json")
+	public void genCer(
+			@PathParam("KeyStoreFileFullName") String KeyStoreFileFullName,
+			@PathParam("KeyStorePassword") String KeyStorePassword,
+			@PathParam("CerFileFullName") String CerFileFullName,
+			@PathParam("KeyPassword") String KeyPassword) {
+
+    	String keyinfo = "CN=(fyuewen), OU=(ibm), O=(cdl), L=(SH), ST=(SH), C=(CN)";
+    	PGPRealization pgp = new PGPRealization();
+    	pgp.genKeyStore("test", keyalgorithms.RSA, KeyStoreFileFullName, keyinfo, KeyStorePassword, KeyPassword);
+    	pgp.export("test", KeyStoreFileFullName, CerFileFullName, KeyStorePassword);
+	}
+
+    @GET
+    @Path("encriptfile/{outFileFullName}/{inFileFullName}/{inKeyFileFullName}")
+	@Produces("application/json")
+	public void encriptFile(
+			@PathParam("outFileFullName") String outFileFullName,
+			@PathParam("inFileFullName") String inFileFullName,
+			@PathParam("inKeyFileFullName") String inKeyFileFullName) {
+		try {
+			PGPRealization.encryptFile(outFileFullName, inFileFullName, inKeyFileFullName, false, true);
+		} catch (NoSuchProviderException | IOException | PGPException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
     
 

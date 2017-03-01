@@ -1,5 +1,8 @@
 package com.ibm.ff.dbfactory;
 
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.lang.Thread.State;
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.ArrayList;
@@ -14,6 +17,11 @@ import com.cloudant.client.api.*;
 import com.cloudant.client.api.model.Response;
 import com.cloudant.http.interceptors.BasicAuthInterceptor;
 import com.cloudant.http.interceptors.CookieInterceptor;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.ibm.ff.rest.entity.cloudant.Skill;
 import com.ibm.ff.rest.entity.mapping.JobRoleMapping;
 
 public class cloudant {
@@ -191,7 +199,34 @@ public class cloudant {
 			return null;
 		}
 	}
-	
+    public static String captureName(String name) {
+        char[] cs=name.toCharArray();
+        cs[0]-=32;
+        return String.valueOf(cs);        
+    }
+    
+    public static Object getFieldValue( Class<?> className, String fieldName, Object objectOfclass)
+    {
+    	try {
+			return getReturnField(className,fieldName).get(objectOfclass);
+		} catch (IllegalArgumentException | IllegalAccessException | SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+    	/*object = (coudantSubClass==null? object.getClass():cloudantSubClass).getDeclaredField(cloudantfield).get(getFieldValue(object));	*/
+    }
+    public static Field getReturnField( Class<?> returnfromclass, String returnfieldname)
+    {
+    	try {
+			return returnfromclass.getDeclaredField(returnfieldname);
+		} catch (IllegalArgumentException | NoSuchFieldException | SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+    	
+    }
 	public List<Object> regexFindByFieldName(String DBName, String findByName, String regex, String returnObjectType){
 		try{
 			List<?> cloudantReturn;
@@ -206,39 +241,151 @@ public class cloudant {
 				connectDB(DBName);
 			String selectorJson="\"selector\":{\""+ findByName +"\":{\"$regex\":\""+regex+"\"}}";
 			cloudantReturn = db.findByIndex(selectorJson, cloudantClass);
-			for (Object object: cloudantReturn)
+	        
+			/*for (Object cloudantReturnObject: cloudantReturn)
 			{
 				response = returnClass.newInstance();
+				for (Field cloudantfield: cloudantClass.getDeclaredFields()){
+					String cloudantfieldname = cloudantfield.getName();
+					String mappingresponsefieldname;
+					if (cloudantfield.getType().isArray()){
+						
+					}
+					else if (cloudantfield.getType().isLocalClass()){
+						
+					}
+					else{
+						//regular type
+						//localclass
+						
+						mappingresponsefieldname = jobrolemap.get(cloudantfield.getName());
+						String[] mappingresponsefields = mappingresponsefieldname.split("\\.");
+						int currentlevel = 0;
+						Object value = cloudantReturnObject;
+						for (String mappingresponsefield : mappingresponsefields){
+							Field responsefield = null;
+							Class<?> responseclass;
+							String responsefieldname;							
+							if (currentlevel==1){
+								responseclass = response.getClass();
+								responsefieldname = mappingresponsefield;
+							}
+							else{
+								responseclass = getDeclaredField(responseclass,responsefieldname).getClass();
+								
+							}
+							responsefield = getDeclaredField(responseclass,responsefieldname);
+							
+							currentlevel++;	
+							
+							
+							
+							if (currentlevel==1){
+								returnfromclass = cloudantReturnObject.getClass();
+								returnfieldname = responsefield;
+							}
+							else{
+								getReturnField(returnfromclass,returnfieldname);
+							}
+							if (responsefield.getType().isLocalClass()){
+								
+							}
+									
+							if (currentlevel==1){
+								returnfield = response.getClass().getDeclaredField(mappingresponsefield);								
+							}
+							if (returnfield.getType().isArray()){
+								
+							}
+							else if (returnfield.getType().isLocalClass()){
+								
+							}
+							else{
+								value= getFieldValue(cloudantReturnObject.getClass(),cloudantfield.getName(),value);
+							}
+						}
+					}
+				}*/
+/*				
 				for (Field field: response.getClass().getDeclaredFields())
 				{
 					try {
-						String cloudantfieldname = jobrolemap.get(field.getName());
-						String[] cloudantfields = cloudantfieldname.split(".");
-						if (cloudantfields.length>0)
-						{
-							Class<?> cloudantSubClass=Class.forName("com.ibm.ff.rest.entity.cloudant." + cloudantfields[0]);
-							field.set(response, cloudantSubClass.getDeclaredField(cloudantfields[1]).get(cloudantSubClass));
+						if (field.getType().isLocalClass()){
+							String[] returnfields = field.getName().split("\\.");
 						}
-						else
-							field.set(response, object.getClass().getDeclaredField(cloudantfieldname).get(object));
+						else if (field.getType().isArray()){
+							List<?> value = new ArrayList();
+							
+							String cloudantfieldname = jobrolemap.get(field.getName());
+							//need update, can change to the iterator.
+							String[] cloudantfields = cloudantfieldname.split("\\.");
+							Object value = object;
+							int totallevel = cloudantfields.length;
+							int currentlevel = 0;	
+							Class<?> cloudantSubClass=null;
+							for (String cloudantfield : cloudantfields)
+							{
+								currentlevel++;
+								if (currentlevel == 1){
+									cloudantSubClass = object.getClass();
+									cloudantfieldname = cloudantfield;
+									value = object;
+									value= getFieldValue(cloudantSubClass,cloudantfieldname,value);									
+								}
+								else{
+									value= getFieldValue(value.getClass(),cloudantfield,value);
+								}
+								if (!value.getClass().isLocalClass()){
+									field.set(response, value); 
+								}
+									
+							}
+							
+							for (Object obj : field.get)
+				            {
+				                MessageBox.Show(obj.GetType().FullName);
+				            }
+							String[] returnfields = field.getName().split("\\.");
+						}
+						else{
+							String cloudantfieldname = jobrolemap.get(field.getName());
+							//need update, can change to the iterator.
+							String[] cloudantfields = cloudantfieldname.split("\\.");
+							Object value = object;
+							int totallevel = cloudantfields.length;
+							int currentlevel = 0;	
+							Class<?> cloudantSubClass=null;
+							for (String cloudantfield : cloudantfields)
+							{
+								currentlevel++;
+								if (currentlevel == 1){
+									cloudantSubClass = object.getClass();
+									cloudantfieldname = cloudantfield;
+									value = object;
+									value= getFieldValue(cloudantSubClass,cloudantfieldname,value);									
+								}
+								else{
+									value= getFieldValue(value.getClass(),cloudantfield,value);
+								}
+								if (!value.getClass().isLocalClass()){
+									field.set(response, value); 
+								}
+									
+							}
+						}						
 					} catch (Exception e) {
 						continue;
 					}
 				}
-
 				responselist.add(response);
-/*				for (Map.Entry<String, String> entry : jobrolemap.entrySet())
-				{					
-					response = returnClass.newInstance();
-					response.getClass().getDeclaredField(entry.getKey()).set(cloudantReturn, object.getClass().getDeclaredField(entry.getValue()));
-					responselist.add(response);
-				}*/
-			}
+			}*/
 			return responselist;
 		} catch (Exception e){
 			System.out.println(e.getStackTrace() ); 	
 			System.out.println(e.getMessage() ); 
 			return null;
 		}
+		
 	}
 }
+ 

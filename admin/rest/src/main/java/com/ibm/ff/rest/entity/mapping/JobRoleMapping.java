@@ -16,10 +16,17 @@ public class JobRoleMapping {
 
 	public JobRoleMapping() {		
 		// TODO Auto-generated constructor stub
-		jobRoleMap.put("jobRoleID1", "jobRoleID");
-		jobRoleMap.put("jobRoleName1", "jobRoleName");
-		jobRoleMap.put("revisionId1", "audit.revisionId");
-		jobRoleMap.put("revisionTimeStamp1", "audit.revisionTimeStamp");
+		jobRoleMap.put("jobRoleID", "jobRoleID1");
+		jobRoleMap.put("property.futureDemand", "futureDemand1");
+		jobRoleMap.put("property.bandId", "band1");
+		jobRoleMap.put("$123", "band1");
+		jobRoleMap.put("property.historyDemand", "historyDemand1");
+		jobRoleMap.put("property.overallFit", "overallFit1");
+		jobRoleMap.put("skills.skillName", "skills1.title1");
+		jobRoleMap.put("skills.skillDescription", "skills1.description1");
+		jobRoleMap.put("skills.skillType", "skills1.skillType1");
+		jobRoleMap.put("jobRoleDescription", "jobRoleDescription1");
+		jobRoleMap.put("responsibilities", "responsibilities1");
 	}
 	
 
